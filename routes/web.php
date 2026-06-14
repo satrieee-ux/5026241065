@@ -7,6 +7,9 @@ use App\Http\Controllers\BlogController ;
 use App\Http\Controllers\PegawaiDBController ;
 use App\Http\Controllers\KeranjangBelanjaController ;
 use App\Http\Controllers\NilaiKuliahController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\SnackController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -105,3 +108,20 @@ Route::post(
 Route::get('/nilaikuliah', [NilaiKuliahController::class, 'index'])->name('nilaikuliah.index');
 Route::get('/nilaikuliah/tambah', [NilaiKuliahController::class, 'tambah'])->name('nilaikuliah.tambah');
 Route::post('/nilaikuliah/store', [NilaiKuliahController::class, 'store'])->name('nilaikuliah.store');
+
+//CRUD Siswa
+Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
+Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+Route::get('/siswa/{nrp}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+Route::put('/siswa/{nrp}', [SiswaController::class, 'update'])->name('siswa.update');
+Route::delete('/siswa/{nrp}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+
+
+//CRUD Snack
+Route::get('/snack', [SnackController::class, 'index']);
+Route::get('/snack/create', [SnackController::class, 'create']);
+Route::post('/snack/store', [SnackController::class, 'store']);
+Route::get('/snack/edit/{id}', [SnackController::class, 'edit']);
+Route::post('/snack/update', [SnackController::class, 'update']);
+Route::delete('/snack/delete/{id}', [SnackController::class, 'destroy']);
