@@ -9,7 +9,11 @@ use App\Http\Controllers\KeranjangBelanjaController ;
 use App\Http\Controllers\NilaiKuliahController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SnackController;
-
+// Latihan Mandiri
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\ProdukController;
+// UAS
+use App\Http\Controllers\TagihanController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -125,3 +129,20 @@ Route::post('/snack/store', [SnackController::class, 'store']);
 Route::get('/snack/edit/{id}', [SnackController::class, 'edit']);
 Route::post('/snack/update', [SnackController::class, 'update']);
 Route::delete('/snack/delete/{id}', [SnackController::class, 'destroy']);
+
+//Buku Practice
+Route::get('/buku', [BukuController::class, 'index']);
+Route::post('/buku/pinjam/{id}', [BukuController::class, 'pinjam']);
+
+//Produk Practice
+Route::get('/produk', [ProdukController::class, 'index']);
+Route::post('/produk/ambil/{id}', [ProdukController::class, 'ambil']);
+Route::post('/produk/tambah/{id}', [ProdukController::class, 'tambah']);
+
+// UAS
+Route::get('/eas', [TagihanController::class, 'index']);
+Route::get('/eas/create', [TagihanController::class, 'create']);
+Route::post(
+    '/eas/store',
+    [TagihanController::class, 'store']
+);
